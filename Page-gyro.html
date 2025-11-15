@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gyro Parallax Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-1: #0f172a;
+      --accent-1: #6ee7b7;
+      --accent-2: #60a5fa;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(900px 500px at 10% 20%, rgba(96,165,250,0.1), transparent),
+                  radial-gradient(900px 500px at 90% 80%, rgba(110,231,183,0.08), transparent),
+                  linear-gradient(180deg,var(--bg-1), #071027 80%);
+      background-size: 120% 120%;
+      transition: background-position 0.1s linear;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 30px 36px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      max-width: 600px;
+      line-height: 1.5;
+      box-shadow: 0 10px 30px rgba(5,10,25,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Параллакс по гироскопу</h1>
+    <p>Эта страница демонстрирует мягкое движение фона при наклоне мобильного устройства.</p>
+    <p>Эффект минималистичный и почти невидимый, но даёт ощущение глубины.</p>
+  </div>
+
+<script>
+  // Проверка поддержки motion sensors
+  if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+    // iOS требует разрешение пользователя
+    DeviceOrientationEvent.requestPermission().then(state => {
+      if (state === "granted") {
+        window.addEventListener('deviceorientation', gyroMove);
+      }
+    }).catch(console.error);
+  } else if (window.DeviceOrientationEvent) {
+    // Android обычно не требует разрешения
+    window.addEventListener('deviceorientation', gyroMove);
+  }
+
+  function gyroMove(e) {
+    // получаем наклон
+    const tiltX = e.gamma || 0; // -45..45
+    const tiltY = e.beta  || 0; // -45..45
+
+    // переводим в очень небольшое смещение
+    const x = tiltX * 0.3;
+    const y = tiltY * 0.3;
+
+    document.body.style.backgroundPosition = `${50 + x}% ${50 + y}%`;
+  }
+</script>
+
+</body>
+</html>

@@ -1,149 +1,139 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Спираль Фибоначчи — настоящая раскрутка</title>
-<style>
-  body, html { margin:0; height:100%; background:#000; overflow:hidden; }
-  #container {
-    position: absolute;
-    width: 200vw; height: 200vh;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-  .box {
-    position: absolute;
-    border: 3px solid #0f0;
-    box-sizing: border-box;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
-    font-size: 3vw;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform-origin: center;
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    text-shadow: 0 0 20px #0f0;
-    box-shadow: 0 0 30px rgba(0,255,0,0.4);
-  }
-  .box.visible {
-    opacity: 1;
-    transform: scale(1) rotate(0deg) !important;
-  }
-  .spiral-line {
-    position: absolute;
-    width: 100%; height: 100%;
-    border: 2px solid #f0f;
-    border-radius: 50%;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karabas Barabas | Владелец кукольного театра</title>
+  <meta name="description" content="Владелец кукольного театра. Жёсткий руководитель."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f1a;
+      --text: #e2e8f0;
+      --accent: #6c5ce7;
+      --card: #1a1a2e;
+      --border: #2d2d44;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-8px); }
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  transform: perspective(1000px) rotateY(0deg);
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.2);
+}
+
+.avatar:hover {
+  transform: perspective(1000px) rotateY(8deg) scale(1.1);
+  border: 5px solid #a29bfe;
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+  cursor: pointer;
+}
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--border);
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 0.75rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    .links a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .links a svg {
+      width: 18px; height: 18px;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    .card {
+      animation: fadeIn 0.8s ease-out;
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <img src="https://raw.githubusercontent.com/klakk18/klakk18.github.io/main/avatar.jpg" alt="Фото" class="avatar">
+    <h1>Karabas Barabas</h1>
+    <p>Владелец кукольного театра &amp; жёсткий руководитель</p>
+    
+    <div class="links">
+      <a href="mailto:karabas@karabas.com">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+      <a href="https://t.me/karabas" target="_blank">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 8.875l-2.137 10.083c-.162.75-.588.938-1.188.583l-3.25-2.396-1.862 1.794c-.206.2-.375.367-.768.367l.275-3.904 7.1-6.417c.308-.275-.067-.429-.475-.154l-8.767 5.525-3.375-.996c-.733-.217-.746-.733.013-.996l13.975-5.379c.613-.233 1.15.15 1.012.896z"/></svg>
+        Telegram
+      </a>
+      <a href="https://github.com/Klakk18/klakk18.github.io/raw/refs/heads/main/Page-gyro.html" target="_blank">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
 
-<div id="container"></div>
-
-<script>
-// Последовательность Фибоначчи
-const fib = [0, 1];
-while (fib[fib.length-1] < 10000) {
-  fib.push(fib[fib.length-1] + fib[fib.length-2]);
-}
-fib.shift(); // убираем первый ноль
-
-const container = document.getElementById('container');
-const boxes = [];
-let currentIndex = 0;
-
-// Направления приклеивания: 0=вправо, 1=вверх, 2=влево, 3=вниз
-const directions = [
-  {dx: 1, dy: 0},  // вправо
-  {dx: 0, dy:-1},  // вверх
-  {dx:-1, dy: 0},  // влево
-  {dx: 0, dy: 1}   // вниз
-];
-
-let x = 0, y = 0;        // текущие координаты (центр последнего квадрата)
-let dirIndex = 0;        // текущее направление
-let maxInDirection = 1;  // сколько квадратов в текущем направлении
-let countInDirection = 0;
-
-fib.forEach((size, i) => {
-  if (i === 0) return;
-
-  const box = document.createElement('div');
-  box.className = 'box';
-  box.textContent = size;
-
-  // Размер квадрата в vw (чтобы масштабировалось)
-  const side = size * 0.6; // коэффициент подбираем под экран
-  box.style.width = box.style.height = side + 'vw';
-
-  // Позиционируем по спирали
-  const dir = directions[dirIndex];
-  x += dir.dx * fib[i-1] * 0.6;
-  y += dir.dy * fib[i-1] * 0.6;
-
-  box.style.left = (50 + x) + 'vw';
-  box.style.top  = (50 + y) + 'vw';
-
-  // Поворот квадрата в зависимости от направления
-  box.style.transform = `rotate(${dirIndex * 90}deg) scale(0.3)`;
-
-  container.appendChild(box);
-  boxes.push(box);
-
-  // Управление сменой направления (как в настоящей спирали Фибоначчи)
-  countInDirection++;
-  if (countInDirection === maxInDirection) {
-    countInDirection = 0;
-    dirIndex = (dirIndex + 1) % 4;
-    if (dirIndex === 2 || dirIndex === 0) maxInDirection++;
-  }
-});
-
-// Показываем квадраты по одному при прокрутке
-function update() {
-  boxes.forEach((box, i) => {
-    if (i < currentIndex) {
-      box.classList.add('visible');
-    } else {
-      box.classList.remove('visible');
-    }
-  });
-}
-
-// Прокрутка колесом мыши
-window.addEventListener('wheel', e => {
-  if (e.deltaY > 0 && currentIndex < boxes.length) {
-    currentIndex++;
-  } else if (e.deltaY < 0 && currentIndex > 1) {
-    currentIndex--;
-  }
-  update();
-});
-
-// Также поддержка клавиш ← →
-window.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' && currentIndex < boxes.length) currentIndex++;
-  if (e.key === 'ArrowLeft' && currentIndex > 1) currentIndex--;
-  update();
-});
-
-// Автоматическая раскрутка при загрузке (можно убрать)
-let auto = setInterval(() => {
-  if (currentIndex < boxes.length) {
-    currentIndex++;
-    update();
-  } else {
-    clearInterval(auto);
-  }
-}, 800);
-
-update();
-</script>
+    <footer>
+      © 2025 Karabas Barabas. Все права защищены.
+    </footer>
+  </div>
 </body>
 </html>
